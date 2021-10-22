@@ -55,10 +55,12 @@ class Account extends Web
 
         if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password2'])) {
             if ($this->accountModel->sign($_POST["nom"],$_POST["prenom"],$_POST["email"], $_POST["password"], $_POST["password2"],$_POST["diplome"])) {
-                $this->redirect("/me");
+                SessionHelpers::login();
+                $this->redirect("./me");
             } else {
                 // Connexion impossible avec les identifiants fourni.
-                 $error = $this->accountModel->sign($_POST["nom"],$_POST["prenom"],$_POST["email"], $_POST["password"], $_POST["password2"],$_POST["diplome"]);
+             $error = $this->accountModel->sign($_POST["nom"],$_POST["prenom"],$_POST["email"], $_POST["password"], $_POST["password2"],$_POST["diplome"]);
+             $this->redirect("./me");
             }
 
         }
