@@ -57,6 +57,7 @@ class AccountModel extends SQL
             $stmt->bindValue('diplome', $diplome);
             $stmt->execute();
         }
+
     }
 
 

@@ -59,8 +59,7 @@ class Account extends Web
                 $this->redirect("./me");
             } else {
                 // Connexion impossible avec les identifiants fourni.
-             $error = $this->accountModel->sign($_POST["nom"],$_POST["prenom"],$_POST["email"], $_POST["password"], $_POST["password2"],$_POST["diplome"]);
-             $this->redirect("./me");
+             $error = true;
             }
 
         }

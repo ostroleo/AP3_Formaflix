@@ -14,6 +14,7 @@ class SessionHelpers
     static function login($user)
     {
         $_SESSION['USER'] = $user;
+        $_SESSION['diplome'] = $diplome;
     }
 
     static function logout()
@@ -25,6 +26,7 @@ class SessionHelpers
     {
         if (SessionHelpers::isLogin()) {
             return $_SESSION['USER'];
+            return $_SESSION['diplome'];
         } else {
             return array();
         }
