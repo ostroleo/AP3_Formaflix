@@ -3,6 +3,7 @@
 namespace controllers;
 
 use controllers\base\Web;
+use models\CommentaireModel;
 use models\CompetenceModel;
 use models\FormationModel;
 use utils\SessionHelpers;
@@ -15,11 +16,20 @@ class Formation extends Web
 {
     private $formationModel;
     private $CompetenceModel;
+    private $CommentaireModel;
 
     function __construct()
     {
         $this->formationModel = new FormationModel();
         $this->CompetenceModel = new CompetenceModel();
+        $this->CommentaireModel = new CommentaireModel();
+    }
+    function liste()
+    {
+        $this->header(); // Affichage de l'entête.
+        $todos = $this->todoModel->getAll(); // Récupération des TODOS présents en base.
+        include("views/global/liste.php"); // Affichage de votre vue.
+        $this->footer(); // Affichage de votre pied de page.
     }
 
     // Affichage de la page d'accueil avec en fonction si connecté ou non une liste plus complète.
@@ -52,6 +62,7 @@ class Formation extends Web
         $this->footer();
     }
 
+
     /**
      * $id est automatiquement rempli via la valeur du GET
      * @param $id
@@ -71,6 +82,7 @@ class Formation extends Web
 
         // Compétence assocés à la vidéo
         $competences = $this->formationModel->competencesFormation($video["IDFORMATION"]);
+        $commentaires = $this->CommentaireModel->getCommentaire($video["IDFORMATION"]);
         $this->header();
         include("./views/formation/tv.php");
         $this->footer();

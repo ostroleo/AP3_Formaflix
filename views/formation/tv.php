@@ -34,45 +34,37 @@
         </div>
 
     </div>
-    <!--    <div class="card border-danger mb-3">-->
-    <!--        <h5 class="card-title  my-3 mx-36">Commentaires</h5>-->
-    <!--        <form class="form-inline" method="post" action="addCommentaire">-->
-    <!--            <div class="card container mt-3 ">-->
-    <!---->
-    <!---->
-    <!--                <input name="texte" class="form-control" id="texte" placeholder="Entrez votre commentaire">-->
-    <!--                <button type="submit" class="btn btn-danger my-2">Envoyer le commentaire</button>-->
-    <!---->
-    <!--            </div>-->
-    <!--        </form>-->
-    <!---->
-    <!--        <div class="card border-danger mb-3">-->
-    <!---->
-    <!--            <div class="card-header"> Léo Ostrowski</div>-->
-    <!--            <div class="card-body ">-->
-    <!--                <blockquote class="blockquote mb-0">-->
-    <!--                    <p>Vraiment pas mal!!</p>-->
-    <!---->
-    <!--                    <footer class="blockquote-footer"> 5/5</footer>-->
-    <!--                </blockquote>-->
-    <!--            </div>-->
-    <!--        </div>-->
+    <div class="card border-danger mt-4 w-100 ">
+        <h5 class="card-title  my-3 mx-3">Commentaires</h5>
+        <form class="form-inline" method="post" action="addCommentaire">
+            <div class="card container mt-3 ">
 
-    <!--    </form>-->
-    <div class="card border-danger mb-3">
+                <input name="texte" class="form-control" id="texte" placeholder="Entrez votre commentaire">
+                <button type="submit" class="btn btn-danger my-2">Envoyer le commentaire</button>
 
-        <div class="card-header"> Léo Ostrowski</div>
-        <div class="card-body ">
-            <blockquote class="blockquote mb-0">
-                <p>Vraiment pas mal!!</p>
 
-                <footer class="blockquote-footer"> 5/5</footer>
-            </blockquote>
-        </div>
+                <?php
+                foreach ($commentaires as $commentaire) {
+                    ?>
+                    <div class="card border-danger mb-3">
+
+                        <div class="card-header"><?= $commentaire["NOMINSCRIT"]." ". $commentaire["PRENOMINSCRIT"]?></div>
+                        <div class="card-body ">
+                            <blockquote class="blockquote mb-0">
+                                <p><?= $commentaire["LIBELLE"] ?></p>
+
+                                <footer class="blockquote-footer"><?= $commentaire["NOTE"] ?> /5</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+
+            </div>
     </div>
+    </form>
 </div>
-</div>
-
 
 <!--<p>--><? // = $commentaire["commentaire"]?><!--</p>-->
 <!-- <footer class="blockquote-footer"> --><? // = $commentaire["inscrit"]?><!--</footer>-->

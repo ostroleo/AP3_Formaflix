@@ -14,7 +14,6 @@ class SessionHelpers
     static function login($user)
     {
         $_SESSION['USER'] = $user;
-        $_SESSION['diplome'] = $diplome;
     }
 
     static function logout()
