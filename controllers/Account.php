@@ -6,6 +6,7 @@ namespace controllers;
 
 use controllers\base\Web;
 use models\AccountModel;
+use models\CommentaireModel;
 use utils\SessionHelpers;
 
 class Account extends Web
@@ -39,13 +40,15 @@ class Account extends Web
     function logout()
     {
         SessionHelpers::logout();
-        $this->redirect("/login");
+        $this->redirect("login");
     }
 
     // Affiche l'utilisateur actuellement connecté.
     function me()
     {
         $this->header();
+        $diplomes = $this->accountModel->getAllDiplome();
+        //$commentaires = $this->CommentaireModel->getCommentaire();
         include("views/account/me.php");
         $this->footer();
     }

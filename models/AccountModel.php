@@ -19,7 +19,7 @@ class AccountModel extends SQL
         $inscrit = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if ($inscrit !== false && password_verify($password, $inscrit['MOTPASSEINSCRIT'])) {
-            SessionHelpers::login(array("username" => "{$inscrit["NOMINSCRIT"]} {$inscrit["PRENOMINSCRIT"]}", "email" => $inscrit["EMAILINSCRIT"]));
+            SessionHelpers::login(array("username" => "{$inscrit["NOMINSCRIT"]} {$inscrit["PRENOMINSCRIT"]}", "email" => $inscrit["EMAILINSCRIT"], "idUser" => $inscrit["IDINSCRIT"]));
             return true;
         } else {
             SessionHelpers::logout();
@@ -34,15 +34,7 @@ class AccountModel extends SQL
         $listeMail = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         $register=true;
-        if ($diplome == 0) {
-            $register=false;
-            return 1;
-        }
 
-        if ($password != $password2) {
-            $register=false;
-            return 2;
-        }
 //            SessionHelpers::logout();
 //            $login = false;
 //            return $error = 3; //mots de passe différents
@@ -66,6 +58,15 @@ class AccountModel extends SQL
         $stmt = $this->pdo->query("SELECT id,libelle FROM diplome");
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+
+    public function updateUsername($nom)
+    {
+        $stmt = $this->pdo->query("UPDATE inscrit SET NOMINSCRIT = ? WHERE IDINSCRIT = $_POST[IDINSCRIT]");
+        $stmt->bindParam(1, $nom);
+        $stmt->execute();
+    }
+
     // -> À faire, récupération des paramètres & création du mot de passe
     // -> Ajouter en base de données l'utilisateur.
 }

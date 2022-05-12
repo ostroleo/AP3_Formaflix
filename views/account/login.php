@@ -23,6 +23,7 @@
                                     <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe">
                                     <label for="floatingPassword">Mot de passe</label>
                                 </div>
+                                 
 
                                 <button class="w-100 mt-5 btn btn-lg btn-primary" type="submit">Connexion</button>
                                 <a href="./sign">Inscrivez-vous</a>

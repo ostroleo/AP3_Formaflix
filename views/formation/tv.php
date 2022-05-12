@@ -35,20 +35,23 @@
 
     </div>
     <div class="card border-danger mt-4 w-100 ">
+    
         <h5 class="card-title  my-3 mx-3">Commentaires</h5>
-        <form class="form-inline" method="post" action="addCommentaire">
-            <div class="card container mt-3 ">
-
-                <input name="texte" class="form-control" id="texte" placeholder="Entrez votre commentaire">
+        <form class="form-inline" method="post" action="./ajouterCommentaire">
+             <form action="" id="myform">
+                <input name="id" class="form-control" id="texte" value="<?= $_GET['id']?>" hidden>
+                <input name="idVideo" class="form-control" id="texte" value="<?= $video['IDFORMATION']?>" hidden>
+                <input type="text" name="texte" id="texte" placeholder="Votre commentaire">
+                <input type="text" name="note" id="note" placeholder="Votre note /5">
                 <button type="submit" class="btn btn-danger my-2">Envoyer le commentaire</button>
-
+        </form>
 
                 <?php
                 foreach ($commentaires as $commentaire) {
                     ?>
-                    <div class="card border-danger mb-3">
+                    <div class="card border-danger mb-3 my-2 mx-2">
 
-                        <div class="card-header"><?= $commentaire["NOMINSCRIT"]." ". $commentaire["PRENOMINSCRIT"]?></div>
+                        <div class="card-header "><?= $commentaire["NOMINSCRIT"]." ". $commentaire["PRENOMINSCRIT"]?></div>
                         <div class="card-body ">
                             <blockquote class="blockquote mb-0">
                                 <p><?= $commentaire["LIBELLE"] ?></p>
@@ -63,8 +66,4 @@
 
             </div>
     </div>
-    </form>
 </div>
-
-<!--<p>--><? // = $commentaire["commentaire"]?><!--</p>-->
-<!-- <footer class="blockquote-footer"> --><? // = $commentaire["inscrit"]?><!--</footer>-->

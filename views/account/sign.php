@@ -12,27 +12,7 @@
                                 <?php
                             }
                             ?>
-                            <?php
-                            if (isset($error) && $error == 1) {
-                                ?>
-                                <div class="alert alert-danger">Aucun diplôme rentré</div>
-                                <?php
-                            }
-                            ?>
-                            <?php
-                            if (isset($error) && $error == 2) {
-                                ?>
-                                <div class="alert alert-danger">Adresse mail déja utilisé</div>
-                                <?php
-                            }
-                            ?>
-                            <?php
-                            if (isset($error) && $error == 3) {
-                                ?>
-                                <div class="alert alert-danger">Les mots de passe ne sont pas identiques</div>
-                                <?php
-                            }
-                            ?>
+                           
                             <form method="POST" action="./sign">
                                 <h1 class="h3 mb-3 fw-normal text-light">Inscription</h1>
 
@@ -64,8 +44,25 @@
                                     }
                                     ?>
                                 </select>
-
+                                
                                 <button class="w-100 mt-4 btn btn-lg btn-primary" type="submit">Valider</button>
+
+                                <?php
+                            if ($diplome == 0) {
+                                ?>
+                                <div class="alert alert-danger">Aucun diplôme rentré</div>
+                                <?php
+                            }
+                            ?>
+                            <?php
+                            if ($_POST["password"] != $_POST["password2"] ) {
+                                ?><br>
+                                <div class="alert alert-danger">Les mots de passe ne sont pas identiques</div>
+                                <?php
+                            }
+                            ?>
+
+
 
                             </form>
                         </main>
